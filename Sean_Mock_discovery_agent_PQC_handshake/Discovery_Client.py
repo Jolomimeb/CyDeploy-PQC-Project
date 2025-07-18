@@ -56,7 +56,7 @@ def client_connect(client_socket_info_json):
 
 print("Connecting to localhost server on port 1026...")
 
-#multiple clients connecting simultaneously
+#5 mock clients connecting simultaneously. More can be made by creating additional threads.
 try:
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect(('127.0.0.1', 1026))
