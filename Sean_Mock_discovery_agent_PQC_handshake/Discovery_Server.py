@@ -42,6 +42,7 @@ def receiving(conn, addr):
         iv = bytes.fromhex(publicKey_info_signature["iv"])
         signature = bytes.fromhex(publicKey_info_signature["signature"])
 
+        #use secret to decrypt and print client system info once signature verified
         if ML_DSA_65.verify(client_dpk, client_encrypted_info_json, signature):
             cipher = Cipher(algorithms.AES(secret), modes.CBC(iv))
             decryptor = cipher.decryptor()
@@ -51,7 +52,8 @@ def receiving(conn, addr):
             print(f"Client {addr} successful handshake. System info: {client_encrypted_info.decode()}")
         else:  
             print(f"Client {addr} unsuccessful handshake. Signature failed verification.")
-
+            
+        #closes client socket when client disconnects
         while connected:
             data = conn.recv(32768)
             if not data:
