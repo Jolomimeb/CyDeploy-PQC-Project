@@ -36,7 +36,7 @@ Runs the discovery system:
 
 ---
 
-## 💪 Demo Flow
+## Demo Flow
 
 ### Setup the Ubuntu VM
 
