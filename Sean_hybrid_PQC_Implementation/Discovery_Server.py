@@ -24,7 +24,7 @@ def receiving(conn, addr, kem_choice):
             print("\nML_KEM (PQC) half: " + str(secret[:16]))
             print("X25519 (Classical) half: " + str(derived_e_secret))
             secret = secret[:16] + derived_e_secret
-            print("New Hybrid shared secret key: " + str(secret))
+            print("New Hybrid shared secret key: " + str(secret) + "\n")
         else:
             print("\nML_KEM (PQC) shared secret key: " + str(secret) + "\n")
 
