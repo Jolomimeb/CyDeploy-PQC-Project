@@ -44,14 +44,8 @@ This project demonstrates a secure IoT device discovery and inventory system usi
 
 ## How to Run the Demo
 
-1. **Install dependencies** (ensure you have the required PQC libraries and `pycryptodome`).
-2. **Run the demo:**
-   ```
-   python demo_runner.py
-   ```
-   This will start both the device and the discovery agent, demonstrating the full secure discovery and inventory verification workflow.
-
----
+1. **Install dependencies** .
+2. **Run the demo using python demo_runner.py**
 
 ## Project Flow Diagram
 
