@@ -17,10 +17,20 @@ def run_client(mode='pqc', simulate_multiple=False):
     logging.basicConfig(level=logging.INFO)
     if simulate_multiple:
         # Simulate multiple clients
+        threads = []
         for i in range(5):
             thread = threading.Thread(target=client_logic, args=(mode, f"mockdevice_{i+1}",))
+            threads.append(thread)
             thread.start()
+            # Small delay between client connections to prevent overwhelming the server
+            import time
+            time.sleep(0.1)
+        
+        # Wait for all threads to complete
+        for thread in threads:
+            thread.join()
     else:
+        print("here")
         client_logic(mode, "mockdevice_1")
 
 def client_logic(mode, hostname):
