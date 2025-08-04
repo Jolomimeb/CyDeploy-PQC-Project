@@ -1,10 +1,10 @@
-# CyDeploy-PQC-Project
+# CyDeploy-Asset-Discovery-Using-PQC-Project
 
-A Post-Quantum Cryptography (PQC) and Hybrid Cryptography implementation for secure asset discovery and inventory management. This project demonstrates the use of quantum-resistant cryptographic algorithms for secure device discovery and communication.
+This project demonstrates the use of Post-Quantum Cryptography (PQC) and Hybrid Cryptography implementation for secure asset discovery.
 
 ## Project Overview
 
-CyDeploy-PQC-Project implements a client-server architecture for secure asset discovery using two cryptographic modes:
+Implements a client-server architecture for secure asset discovery using two cryptographic modes:
 
 1. **Pure PQC Mode**: Uses ML-KEM-512 (Kyber) for key exchange and Dilithium2 for digital signatures
 2. **Hybrid Mode**: Combines ML-KEM-768 + ML-DSA-65 (quantum-resistant) with X25519 (classical) for enhanced security
