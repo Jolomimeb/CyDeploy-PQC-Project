@@ -45,6 +45,10 @@ class PQCHandler(CryptoHandler):
     def derive_aes_key(self, shared_key):
         return pqc_derive_aes_key(shared_key)
 
+    def generate_dilithium_keys(self):
+        """Generate Dilithium2 keypair for signing."""
+        return pqc_generate_keys()
+
     def sign(self, sk, message: bytes) -> bytes:
         return pqc_sign_message(sk, message)
 

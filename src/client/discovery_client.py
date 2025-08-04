@@ -33,6 +33,8 @@ def client_logic(mode, hostname):
             if mode == 'pqc':
                 # PQC key exchange and inventory send/verify
                 ek, dk = crypto.key_exchange('client')
+                # Also generate Dilithium2 keys for signing
+                pk, sk = crypto.generate_dilithium_keys()
                 print(f"[{hostname}] PQC client keys generated")
                 print(f"[{hostname}] ML_KEM_512 public key (bytes): {ek}")
                 print(f"[{hostname}] ML_KEM_512 public key (hex): {ek.hex()}")
@@ -65,7 +67,8 @@ def client_logic(mode, hostname):
                 # Send inventory data to server using the same approach as hybrid
                 inventory_data = get_mock_inventory()
                 inventory_json = json.dumps(inventory_data)
-                publicKey_info_iv_signature_json = crypto.sign_aes_encrypted(aes_key, dk, ek, inventory_json)
+                publicKey_info_iv_signature_json = crypto.sign_aes_encrypted(aes_key, sk, pk, inventory_json)
+                print("here")
                 s.send(publicKey_info_iv_signature_json.encode())
                 logger.info(f"[{hostname}] Sent encrypted inventory data to server")
                 
