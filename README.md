@@ -152,13 +152,6 @@ python -m src.main --role client --mode hybrid --simulate-multiple
 - **Logging**: Detailed logs of cryptographic operations and key exchanges
 - **Console Output**: Key information, shared secrets, and connection status
 
-## 🔧 Configuration
-
-- **Host**: `127.0.0.1` (client), `0.0.0.0` (server)
-- **Port**: `65432`
-- **Buffer Size**: `32768` bytes for large payloads
-- **Threading**: Supports multiple concurrent clients
-
 ## Performance
 
 - **PQC Mode**: Faster key exchange, smaller key sizes
