@@ -42,7 +42,7 @@ def handle_client(conn, addr, mode, crypto):
             trigger = conn.recv(1024)
             logger.info(f"[Server] Received trigger: {trigger.decode()}")
             
-            # Receive and verify client inventory info using the same approach as hybrid
+            # Receive and verify client inventory info 
             publicKey_info_signature_json = conn.recv(32768).decode('utf-8')
             client_dpk, client_encrypted_info_json, iv, signature = crypto.extract_signed_aes_encrypted_message(publicKey_info_signature_json)
             

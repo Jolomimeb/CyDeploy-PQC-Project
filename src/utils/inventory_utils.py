@@ -1,6 +1,4 @@
-# inventory_utils.py - Simplified mock inventory data
-# This module provides a minimal list of mock devices for testing the inventory system.
-
+# This is the mock data that gets sent to the server
 import json
 
 mock_devices = [

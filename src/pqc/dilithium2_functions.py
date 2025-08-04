@@ -1,4 +1,3 @@
-# dilithium2_functions.py - Dilithium2 signature utilities
 # Provides functions to generate Dilithium2 keypairs, sign, and verify.
 # dillithium2 is basicall Ml_dsa_44 parameter
 from dilithium_py.dilithium import Dilithium2

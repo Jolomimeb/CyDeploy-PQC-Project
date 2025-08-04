@@ -22,7 +22,7 @@ def run_client(mode='pqc', simulate_multiple=False):
             thread = threading.Thread(target=client_logic, args=(mode, f"mockdevice_{i+1}",))
             threads.append(thread)
             thread.start()
-            # Small delay between client connections to prevent overwhelming the server
+            # I added delay between clients
             import time
             time.sleep(0.1)
         
@@ -74,7 +74,7 @@ def client_logic(mode, hostname):
                 s.sendall(b'discover')
                 logger.info(f"[{hostname}] Sent discovery trigger to server")
                 
-                # Send inventory data to server using the same approach as hybrid
+                # Send inventory data to server
                 inventory_data = get_mock_inventory()
                 inventory_json = json.dumps(inventory_data)
                 publicKey_info_iv_signature_json = crypto.sign_aes_encrypted(aes_key, sk, pk, inventory_json)
@@ -108,10 +108,7 @@ def client_logic(mode, hostname):
                 try:
                     signed_payload_str = signed_payload.decode('utf-8')
                 except UnicodeDecodeError:
-                    # Handle as binary data - this might be a different format
                     logger.info(f"[{hostname}] Received binary signed payload, length: {len(signed_payload)}")
-                    # For now, let's assume it's a JSON string that might have some binary parts
-                    # We'll need to handle this more carefully
                     signed_payload_str = signed_payload.decode('utf-8', errors='ignore')
                 
                 server_dpk, ciphertext, signature = crypto.extract_signed_message(signed_payload_str)
@@ -141,7 +138,7 @@ def client_logic(mode, hostname):
                     print(f"[{hostname}] New Hybrid shared secret key (bytes): {hybrid_secret}")
                     print(f"[{hostname}] New Hybrid shared secret key (hex): {hybrid_secret.hex()}")
                     
-                    # Send inventory data to server using the same function as PQC
+                    # Send inventory data to server
                     inventory_data = get_mock_inventory()
                     inventory_json = json.dumps(inventory_data)
                     publicKey_info_iv_signature_json = crypto.sign_aes_encrypted(hybrid_secret, dsa_sk, dsa_pk, inventory_json)
