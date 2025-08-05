@@ -149,12 +149,9 @@ python -m src.main --role client --mode hybrid --simulate-multiple
 
 - **Server**: Receives and saves inventory to `inventory_received_[IP]_[PORT].txt`
 - **Client**: Sends mock inventory with device information
-- **Logging**: Detailed logs of cryptographic operations and key exchanges
-- **Console Output**: Key information, shared secrets, and connection status
 
 ## Performance
 
 - **PQC Mode**: Faster key exchange, smaller key sizes
 - **Hybrid Mode**: Enhanced security with classical + quantum-resistant algorithms
-- **Multiple Clients**: Supports up to 5 concurrent client connections
-- **Threading**: Non-blocking server with thread-per-client model
+- **Multiple Clients**: Both modes supports up to 5 concurrent client connections
