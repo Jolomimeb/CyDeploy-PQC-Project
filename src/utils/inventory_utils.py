@@ -7,18 +7,5 @@ mock_devices = [
 ]
 
 def get_mock_inventory():
-    """Returns the complete inventory list for testing/discovery."""
+    # i just return the mock devices
     return mock_devices
-
-def get_inventory_summary():
-    """Returns a summary of the inventory"""
-    total_devices = len(mock_devices)
-    online_count = len([d for d in mock_devices if d["status"] == "Online"])
-    offline_count = len([d for d in mock_devices if d["status"] == "Offline"])
-    
-    return {
-        "total_devices": total_devices,
-        "online": online_count,
-        "offline": offline_count,
-        "devices": mock_devices
-    }
