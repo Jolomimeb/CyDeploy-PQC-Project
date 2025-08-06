@@ -25,8 +25,6 @@ Implements a client-server architecture for secure asset discovery using two cry
 
 ## Project Structure
 
-## Handshake Protocol
-
 ### Pure PQC Mode Handshake
 
 1. **Client Key Generation**:
