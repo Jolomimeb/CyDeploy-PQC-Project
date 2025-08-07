@@ -41,13 +41,12 @@ def verify_leaf_certificate(leaf_CA):
             issued_by_root = ML_DSA_65.verify(bytes.fromhex(root_CA["Public_Key"]), intermediate_CA["Common_Name"].encode() + intermediate_CA["Issuer"].encode() + bytes.fromhex(intermediate_CA["Public_Key"]), bytes.fromhex(intermediate_CA["Signature"]))
             return issued_by_root
         else:
-            print("internmediate failed chungus")
             return False
     else:
-        print("leaf and intermediate name not match chungus")
         return False
 
 #returns public key in bytes from json formatted certificate
 def get_public_key(certificate):
     certificate = json.loads(certificate)
+
     return bytes.fromhex(certificate["Public_Key"])
