@@ -3,6 +3,7 @@ from filelock import FileLock
 from dilithium_py.ml_dsa import ML_DSA_65
 
 #simulates the intermediate CA issuing a leaf certificate given the name and ML-DSA public key
+#file locks are only used because, in this program example, the files may be read at the same time since clients call this function simultaneously, sometimes causing errors
 def issue_leaf_certificate(common_name, public_key):
 
     #only time the intermediate CA's private key is used: signing the certificate information
@@ -50,3 +51,4 @@ def get_public_key(certificate):
     certificate = json.loads(certificate)
 
     return bytes.fromhex(certificate["Public_Key"])
+
