@@ -15,6 +15,7 @@ def receiving(conn, addr):
         client_dpk = Certificate_Functions.get_public_key(client_certificate)
 
         if Certificate_Functions.verify_leaf_certificate(client_certificate):
+            #sends challenge to client and gets signature. Verification means that client has certificate's associated secret key
             print("Trusted client certificate")
             challenge_message = iv = secrets.token_bytes(32)
             conn.send(challenge_message)
@@ -112,3 +113,4 @@ print(f"Server {server_socket.getsockname()} up.\n" )
 
 #start actually receiving connections with the intent of handshake
 accepting()
+
