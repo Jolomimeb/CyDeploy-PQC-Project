@@ -117,8 +117,8 @@ def client_logic(mode, hostname):
                 if crypto.verify(server_dpk, ciphertext, signature):
                     # Decapsulate ML_KEM secret
                     secret = crypto.decapsulate(kem_sk, ciphertext)
-                    print(f"[{hostname}] Hybrid ML_KEM_768 secret (bytes): {secret}")
-                    print(f"[{hostname}] Hybrid ML_KEM_768 secret (hex): {secret.hex()}")
+                    print(f"[{hostname}] ML_KEM_768 secret (bytes): {secret}")
+                    print(f"[{hostname}] ML_KEM_768 secret (hex): {secret.hex()}")
                     
                     # Send X25519 public key
                     s.send(serialized_x25519_pk)

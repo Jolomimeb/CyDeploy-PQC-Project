@@ -38,7 +38,7 @@ def handle_client(conn, addr, mode, crypto):
             print(f"[Server] PQC AES key (bytes): {aes_key}")
             print(f"[Server] PQC AES key (hex): {aes_key.hex()}")
             
-            # Wait for trigger from client
+            # Wait for trigger from clientt
             trigger = conn.recv(1024)
             logger.info(f"[Server] Received trigger: {trigger.decode()}")
             
