@@ -18,7 +18,7 @@ def client_connect(client_socket_info, kem_choice):
         client_socket.connect(('127.0.0.1', 1026))
         addr = client_socket.getsockname()
 
-        client_socket.recv(32768)     #hangs for server response
+        client_socket.recv(32768)     #hangs for server response before sending anything
 
         client_socket.send(kem_choice.encode())
         
@@ -93,3 +93,4 @@ thread2.start()
 thread3.start()
 thread4.start()
 thread5.start()
+
