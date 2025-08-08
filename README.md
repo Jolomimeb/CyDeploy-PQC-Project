@@ -4,7 +4,7 @@
 
   1. Run Create_Root_Intermediate_Certificates.py to create and write (or replace) to the directory the Root certificate, Intermediate certificate, and Intermediate private key
   2. Run Discovery_Server.py to start server and listen for TCP connections
-  3. Run Discovery_Client.py to have clients start connecting to server
+  3. Run Discovery_Client.py to have clients start connecting to server (takes input of 1-64 # of clients)
 
   Certificate_Functions.py, ML_DSA_Functions.py, ML_KEM_Functions.py, and X25519_Functions.py are called by the client and server files
   
@@ -27,7 +27,7 @@
 ## Detailed Steps
 
   1. Server creates TCP socket on localhost port 1026 and listens for connections
-  2. Multiple (5 in this program) clients connect simultaneously to server on localhost port 1026
+  2. Multiple (1-64 in this program) clients connect simultaneously to server on localhost port 1026
   3. Server accepts client connections iterably, sending a response string to signal the client to start handshake process
   4. Client sends pure/hybrid PQC choice "P" or "H"
   5. Client sends its certificate which was issued by the intermediate CA and that issued by the Root CA
