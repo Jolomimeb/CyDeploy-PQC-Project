@@ -30,7 +30,7 @@
   2. Multiple (1-64 in this program) clients connect simultaneously to server on localhost port 1026
   3. Server accepts client connections iterably, sending a response string to signal the client to start handshake process
   4. Client sends pure/hybrid PQC choice "P" or "H"
-  5. Client sends its certificate which was issued by the intermediate CA and that issued by the Root CA
+  5. Client sends its certificate which was issued by the intermediate CA (which was in turn issued by the Root CA)
   6. Server verifies that the client's certificate was issued up the CA chain and sends a random challenge to the client
   7. Client creates a signature of the challenge and sends it to the server along with its ML-KEM public key, also signed
   8. Server verifies the challenge signature and ML-KEM public key signature before using client's public key to deriving PQC secret and sending its ciphertext back, signed
