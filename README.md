@@ -22,6 +22,16 @@
   8. Server verifies the challenge signature and ML-KEM public key signature before using client's public key to deriving PQC secret and sending its ciphertext back, signed
   9. Client verifies received ciphertext signature and uses its own private key to derive the same PQC secret
   10. (If mode is hybrid PQC) Client sends its X25519 public key to server with signature, server verifies it and sends its own X25519 public key back. The classical secret is then derived on both ends using the received public keys and their own private keys. The PQC secret is cut in half and the classical secret is concatenated to form the new shared secret
-  11. The secret is used by the client to encrypt its mock system information and send to server
+  11. The secret is used by the client to AES256 encrypt its mock system information and send to server
   12. The server uses the secret to decrypt the received information
 
+## Python Modules Used
+
+-dilithium_py: ML_DSA_65 parameter set and functions
+-kyber_py: ML_KEM_768 parameter set and functions
+-cryptography: X25519 functions, AES encryption
+-socket: TCP communication
+-secrets: cryptographically secure pseudorandom numbers
+-threading: multiple concurrent client connections
+-json: formatting and extracting data sent
+-filelock: handing functions that read files
