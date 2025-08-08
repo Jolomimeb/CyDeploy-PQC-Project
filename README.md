@@ -29,11 +29,11 @@
 
 ## Python Modules Used
 
--dilithium_py: ML_DSA_65 parameter set and functions
--kyber_py: ML_KEM_768 parameter set and functions
--cryptography: X25519 functions, AES encryption
--socket: TCP communication
--secrets: cryptographically secure pseudorandom numbers
--threading: multiple concurrent client connections
--json: formatting and extracting data sent
--filelock: handing functions that read files
+-dilithium_py: ML_DSA_65 parameter set and functions  
+-kyber_py: ML_KEM_768 parameter set and functions  
+-cryptography: X25519 functions, AES encryption  
+-socket: TCP communication  
+-secrets: cryptographically secure pseudorandom numbers  
+-threading: multiple concurrent client connections  
+-json: formatting and extracting data sent  
+-filelock: handing functions that read files  
