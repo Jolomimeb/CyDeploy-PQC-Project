@@ -10,8 +10,8 @@
   
 ## Program Description
 
-          The program simulates a mock TLS handshake between multiple client discovery agents and a server with each client 
-     sending their system information once finished. The handshake consists of the client selecting the mode 
+          The program simulates a mock TLS handshake between multiple client discovery agents and a server with each 
+     client sending their system information once finished. The handshake consists of the client selecting the mode 
      (pure PQC or hybrid PQC), sending the its certificate that contains their ML-DSA public key for singing, each 
      party sending the appropriate public keys (ML-KEM or ML-KEM & classical X25519) to each other depending on the 
      mode and deriving a shared secret, and using that shared secret for the client to encrypt and server to decrypt 
