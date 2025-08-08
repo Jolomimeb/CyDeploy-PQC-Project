@@ -4,7 +4,7 @@
 
   1. Run Create_Root_Intermediate_Certificates.py to create and write (or replace) to the directory the Root certificate, Intermediate certificate, and Intermediate private key
   2. Run Discovery_Server.py to start server and listen for TCP connections
-  3. Run Discovery_Client.py to have clients start connecting to server (takes input of 1-64 # of clients)
+  3. Run Discovery_Client.py to have clients start connecting to server. Takes input of 1-64 # of clients with 50/50 mix being pure/hybrid mode
 
   Certificate_Functions.py, ML_DSA_Functions.py, ML_KEM_Functions.py, and X25519_Functions.py are called by the client and server files
   
