@@ -4,7 +4,7 @@
 
   1. Run Create_Root_Intermediate_Certificates.py to create and write (or replace) to the directory the Root certificate, Intermediate certificate, and Intermediate private key
   2. Run Discovery_Server.py to start server and listen for TCP connections
-  3. Run Discovery_Client.py to have clients start connecting to server. Takes input of 1-64 # of clients with 50/50 mix being pure/hybrid mode
+  3. Run Discovery_Client.py to have clients start connecting to server. Takes input of 1-128 # of clients with 50/50 mix being pure/hybrid mode
 
   Certificate_Functions.py, ML_DSA_Functions.py, ML_KEM_Functions.py, and X25519_Functions.py are called by the client and server files
   
@@ -12,25 +12,29 @@
 
           The program simulates a mock TLS handshake between multiple client discovery agents and a server with each 
      client sending their system information once finished. The handshake consists of the client sending their mode 
-     (pure PQC or hybrid PQC), sending the its certificate that contains their ML-DSA public key for singing, each 
+     (pure PQC or hybrid PQC), sending the its certificate that contains their ML-DSA public key for signing, each 
      party sending the appropriate public keys (ML-KEM or ML-KEM & classical X25519) to each other depending on the 
      mode and deriving a shared secret, and using that shared secret for the client to encrypt and server to decrypt 
      the system information. 
      
-          The program also simulates a simple representation of an X.509 Certificate Authority that allows the server 
+          The program also simulates a simple mock representation of an X.509 Certificate Authority that allows the server 
      to verify that the public ML-DSA key of the certificate the client sends is trusted. The server then verifies 
      that the public key actually belongs to the client by sending a challenge and getting a signature back to verify. 
      With the signing key being trusted, it is used to sign the rest of they ML-KEM and X25519 key exchanges to ensure 
-     they were truly send by the client as well. The goal of this program was to demo how a TLS connection with certificates 
-     would function for either a custom discovery call or when Certifiate Authorities begin to issue PQC certificates.
+     they were truly send by the client as well. This enables an ephemeral key exchange where the KEM key pairs (ML_KEM
+     & X25519) are newly generated for each communication because it is verified by the long term, certificate-issued
+     ML-DSA key pair.
+     
+     The goal of this program was to demo how a TLS connection with certificates would function for either a custom 
+     discovery call or when Certifiate Authorities begin to issue PQC certificates.
 
 ## Detailed Steps
 
   1. Server creates TCP socket on localhost port 1026 and listens for connections
-  2. Multiple (1-64 in this program) clients connect simultaneously to server on localhost port 1026
+  2. Multiple (1-128 in this program) clients connect simultaneously to server on localhost port 1026
   3. Server accepts client connections iterably, sending a response string to signal the client to start handshake process
   4. Client sends its pure/hybrid PQC mode "P" or "H"
-  5. Client sends its certificate which was issued by the intermediate CA (which was in turn issued by the Root CA)
+  5. Client sends its certificate that was issued by the intermediate CA (which was in turn issued by the Root CA)
   6. Server verifies that the client's certificate was issued up the CA chain and sends a random challenge to the client
   7. Client creates a signature of the challenge and sends it to the server along with its ML-KEM public key, also signed
   8. Server verifies the challenge signature and ML-KEM public key signature before using client's public key to deriving PQC secret and sending its ciphertext back, signed
@@ -47,5 +51,5 @@
 -socket: TCP communication  
 -secrets: cryptographically secure pseudorandom numbers  
 -threading: multiple concurrent client connections  
--json: formatting and extracting data sent  
--filelock: handing functions that read files  
+-json: formatting and extracting data sent
+-datetime: certificate expiration dates
