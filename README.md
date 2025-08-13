@@ -51,5 +51,5 @@
 -socket: TCP communication  
 -secrets: cryptographically secure pseudorandom numbers  
 -threading: multiple concurrent client connections  
--json: formatting and extracting data sent
+-json: formatting and extracting data sent  
 -datetime: certificate expiration dates
