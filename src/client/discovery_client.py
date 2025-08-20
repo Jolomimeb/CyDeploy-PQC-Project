@@ -11,6 +11,7 @@ from src.utils.inventory_utils import get_mock_inventory
 HOST = '127.0.0.1'
 PORT = 65432
 logger = logging.getLogger("discovery_client")
+Num_of_Clients = 5
 
 def run_client(mode='pqc', simulate_multiple=False):
     """Entry point for running the client. If simulate_multiple is True, spawns multiple clients (hybrid demo style)."""
@@ -18,7 +19,7 @@ def run_client(mode='pqc', simulate_multiple=False):
     if simulate_multiple:
         # Simulate multiple clients
         threads = []
-        for i in range(5):
+        for i in range(Num_of_Clients):
             thread = threading.Thread(target=client_logic, args=(mode, f"mockdevice_{i+1}",))
             threads.append(thread)
             thread.start()
